@@ -1,0 +1,84 @@
+.reviews { background: var(--cream); }
+
+.container {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+  @media (max-width: 768px) { padding: 0 24px; }
+}
+
+.reviews__header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 32px;
+  margin-bottom: 56px; flex-wrap: wrap;
+  @media (max-width: 768px) { flex-direction: column; align-items: flex-start; }
+}
+
+.reviews__score {
+  display: flex; flex-direction: column; align-items: flex-end;
+  @media (max-width: 768px) { align-items: flex-start; }
+}
+
+.reviews__score-num {
+  font-family: var(--font-display);
+  font-size: 3rem; font-weight: 600;
+  color: var(--espresso); line-height: 1;
+}
+
+.reviews__score-stars { font-size: 16px; }
+
+.reviews__score-label {
+  font-size: 12px; color: var(--mocha); margin-top: 4px; font-weight: 300;
+}
+
+/* Grid */
+.reviews__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  align-items: start;
+
+  @media (max-width: 960px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 600px) { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.review-card {
+  &--offset {
+    margin-top: 28px;
+    @media (max-width: 600px) { margin-top: 0; }
+  }
+
+  &__stars {
+    margin-bottom: 18px; font-size: 14px;
+    color: var(--amber); letter-spacing: 2px;
+  }
+
+  &__text {
+    font-family: var(--font-display);
+    font-size: 1.05rem; font-style: italic; font-weight: 400;
+    color: var(--espresso); line-height: 1.75; margin-bottom: 26px;
+  }
+
+  &--dark &__text { color: var(--ivory); }
+
+  &__author { display: flex; align-items: center; gap: 14px; }
+
+  &__avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--beige); overflow: hidden; flex-shrink: 0;
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  &__name {
+    font-size: 14px; font-weight: 600; color: var(--espresso);
+    &--light { color: var(--ivory); }
+  }
+
+  &__role {
+    font-size: 12px; font-weight: 300; color: var(--mocha); margin-top: 2px;
+    &--light { color: rgba(250,248,243,0.5); }
+  }
+
+  &__verified {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); margin-top: 4px;
+  }
+}

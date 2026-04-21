@@ -1,0 +1,96 @@
+.specials { background: var(--ivory); }
+
+.container {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+  @media (max-width: 768px) { padding: 0 24px; }
+}
+
+.chef-banner {
+  border-radius: 20px; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 540px; background: var(--warm-dark);
+
+  @media (max-width: 860px) { grid-template-columns: 1fr; }
+}
+
+/* Content */
+.chef-banner__content {
+  padding: 72px 64px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
+
+  @media (max-width: 860px) { padding: 48px 32px; }
+}
+
+.chef-banner__eyebrow {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+}
+
+.chef-banner__badge {
+  background: var(--gold); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; padding: 5px 14px; border-radius: 50px;
+}
+
+.chef-banner__eyebrow-sub {
+  font-size: 11px; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(250,248,243,0.5);
+}
+
+.chef-banner__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 600;
+  color: var(--ivory); line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  em { font-style: italic; color: var(--amber); }
+}
+
+.chef-banner__desc {
+  font-size: 0.9375rem; font-weight: 300;
+  color: rgba(250,248,243,0.6); line-height: 1.8;
+  margin-bottom: 40px; max-width: 380px;
+}
+
+.chef-banner__tags {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px;
+}
+
+.chef-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+  border: 1px solid rgba(250,248,243,0.15);
+  color: rgba(250,248,243,0.65); padding: 5px 14px; border-radius: 50px;
+}
+
+/* Visual */
+.chef-banner__visual {
+  position: relative; overflow: hidden;
+
+  @media (max-width: 860px) { min-height: 280px; }
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.chef-banner__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--warm-dark) 0%, transparent 40%);
+
+  @media (max-width: 860px) {
+    background: linear-gradient(to top, var(--warm-dark) 0%, transparent 50%);
+  }
+}
+
+.chef-banner__price-pill {
+  position: absolute; top: 32px; right: 32px; z-index: 3;
+  background: var(--gold); color: #fff;
+  border-radius: 12px; padding: 14px 20px; text-align: center;
+}
+
+.chef-banner__price-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 600; line-height: 1;
+}
+
+.chef-banner__price-lbl {
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85;
+}

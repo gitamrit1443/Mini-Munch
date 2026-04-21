@@ -1,0 +1,111 @@
+<section id="hero" class="hero">
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="hero__glow"  aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <div class="hero__eyebrow">
+      <span class="hero__eyebrow-line"></span>
+      <span>Artisan Pancake Experience</span>
+    </div>
+    <h1 class="hero__title">
+      Where Every<br>Stack is a<br><em>Masterpiece.</em>
+    </h1>
+    <p class="hero__desc">
+      Handcrafted with precision. Finished with care. Mini Munch brings the art
+      of fine breakfast to your doorstep — every morning, without compromise.
+    </p>
+    <div class="hero__btns">
+      <a href="#menu" class="btn btn--primary"
+         (click)="scrollTo('#menu'); $event.preventDefault()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+             stroke-width="1.8" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+        Explore Menu
+      </a>
+      <a href="#configurator" class="btn btn--secondary"
+         (click)="scrollTo('#configurator'); $event.preventDefault()">
+        Build Your Order
+      </a>
+    </div>
+
+    <div class="hero__trust">
+      <div class="hero__trust-item">
+        <div class="hero__trust-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               stroke-width="1.8" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 3v1m0 16v1M4.22 4.22l.71.71M18.36 18.36l.71.71M3 12H4m16 0h1
+                 M4.22 19.78l.71-.71M18.36 5.64l.71-.71"/>
+          </svg>
+        </div>
+        <span>Handcrafted Daily</span>
+      </div>
+      <div class="hero__trust-item">
+        <div class="hero__trust-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               stroke-width="1.8" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6
+                 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623
+                 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152
+                 c-3.196 0-6.1-1.248-8.25-3.285z"/>
+          </svg>
+        </div>
+        <span>Fresh Ingredients</span>
+      </div>
+      <div class="hero__trust-item hero__trust-item--last">
+        <div class="hero__trust-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               stroke-width="1.8" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6
+                 m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5
+                 a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125
+                 c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0
+                 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25
+                 M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106
+                 a48.554 48.554 0 00-10.026 0 1.106 1.106 0
+                 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
+          </svg>
+        </div>
+        <span>Fast Delivery</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__visual">
+    <div class="hero__image-wrap">
+      <img
+        src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=900&q=85&auto=format&fit=crop"
+        alt="Premium artisan pancakes" loading="eager" />
+    </div>
+
+    <!-- Floating badge -->
+    <div class="hero__badge">
+      <div class="hero__badge-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+             stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0
+               00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602
+               a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61
+               l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562
+               0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557
+               l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563
+               0 00.475-.345L11.48 3.5z"/>
+        </svg>
+      </div>
+      <div>
+        <strong>Chef's Signature</strong>
+        <span>Award-winning recipe</span>
+      </div>
+    </div>
+
+    <!-- Rating pill -->
+    <div class="hero__rating-pill">
+      <span class="stars">★★★★★</span>
+      <span>4.9 / 5.0</span>
+    </div>
+  </div>
+</section>

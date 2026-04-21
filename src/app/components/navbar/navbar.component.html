@@ -1,0 +1,79 @@
+<!-- ══ STICKY NAVBAR ══ -->
+<nav
+  class="navbar"
+  [class.navbar--scrolled]="isScrolled()"
+  role="navigation"
+  aria-label="Main navigation"
+>
+  <div class="nav-container">
+    <div class="nav-inner">
+
+      <!-- Brand Logo -->
+      <a href="#" class="nav-logo" (click)="scrollTo('#hero')">
+        <span class="nav-logo__text">Mini Munch</span>
+        <span class="nav-logo__dot" aria-hidden="true"></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" role="list">
+        @for (link of navLinks; track link.href) {
+          <li>
+            <a
+              class="nav-link"
+              [href]="link.href"
+              (click)="scrollTo(link.href); $event.preventDefault()"
+            >{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+
+      <!-- Desktop CTA + Mobile Burger -->
+      <div class="nav-actions">
+        <a
+          href="#configurator"
+          class="btn btn--primary"
+          (click)="scrollTo('#configurator'); $event.preventDefault()"
+        >
+          Order Now
+        </a>
+
+        <button
+          class="nav-burger"
+          [class.nav-burger--active]="mobileOpen()"
+          (click)="toggleMobile()"
+          aria-label="Toggle mobile menu"
+          [attr.aria-expanded]="mobileOpen()"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div
+  class="mobile-menu"
+  [class.mobile-menu--open]="mobileOpen()"
+  role="dialog"
+  aria-label="Mobile navigation"
+>
+  @for (link of navLinks; track link.href) {
+    <a
+      class="mobile-link"
+      [href]="link.href"
+      (click)="scrollTo(link.href); $event.preventDefault()"
+    >{{ link.label }}</a>
+  }
+
+  <div class="mobile-cta">
+    <a
+      href="#configurator"
+      class="btn btn--primary"
+      style="width:100%; justify-content:center"
+      (click)="scrollTo('#configurator'); $event.preventDefault()"
+    >Order Now</a>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<section id="reviews" class="reviews section-pad">
+  <div class="container">
+
+    <div class="reviews__header">
+      <div>
+        <span class="label-tag" [appReveal]="0">Guest Experiences</span>
+        <h2 class="section-title" [appReveal]="100">
+          Voices of Our<br>Community
+        </h2>
+      </div>
+      <div class="reviews__score" [appReveal]="200">
+        <span class="reviews__score-num">4.9</span>
+        <span class="stars reviews__score-stars">★★★★★</span>
+        <span class="reviews__score-label">Based on 1,200+ reviews</span>
+      </div>
+    </div>
+
+    <div class="reviews__grid">
+      @for (review of reviews; track review.id; let i = $index) {
+        <article
+          class="review-card"
+          [class.review-card--dark]="review.featured"
+          [class.review-card--offset]="i === 1"
+          [appReveal]="i * 100"
+        >
+          <div class="review-card__stars">{{ getStars(review.rating) }}</div>
+          <p class="review-card__text">{{ review.text }}</p>
+
+          <div class="review-card__author">
+            <div class="review-card__avatar">
+              <img [src]="review.avatarUrl" [alt]="review.name" loading="lazy" />
+            </div>
+            <div>
+              <p class="review-card__name"
+                 [class.review-card__name--light]="review.featured">
+                {{ review.name }}
+              </p>
+              <p class="review-card__role"
+                 [class.review-card__role--light]="review.featured">
+                {{ review.role }}
+              </p>
+              @if (review.verified) {
+                <p class="review-card__verified">✓ Verified Order</p>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

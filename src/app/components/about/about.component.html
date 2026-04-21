@@ -1,0 +1,53 @@
+<section id="about" class="about section-pad">
+  <div class="container">
+    <div class="about__layout">
+
+      <!-- Images -->
+      <div class="about__images" [appReveal]="0">
+        <div class="about__img-main">
+          <img
+            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format&fit=crop"
+            alt="Our kitchen" loading="lazy" />
+        </div>
+        <div class="about__img-accent">
+          <img
+            src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400&q=80&auto=format&fit=crop"
+            alt="Fresh ingredients" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="about__content" [appReveal]="200">
+        <span class="label-tag">Our Story</span>
+        <h2 class="section-title about__title">
+          Born from a Passion<br>for the <em>Perfect Morning</em>
+        </h2>
+
+        <p class="about__text">
+          Mini Munch was founded on a simple but powerful belief: that breakfast
+          deserves the same care, precision, and artistry as the finest dining
+          experiences. We started in a small kitchen with one griddle, one
+          recipe, and one obsession — perfection.
+        </p>
+        <p class="about__text">
+          Today, every pancake that leaves our kitchen carries that original
+          spirit. We work with small-batch suppliers, season-driven ingredients,
+          and a culinary team who believe that even the simplest dish can be
+          extraordinary when approached with discipline and love.
+        </p>
+
+        <div class="about__metrics">
+          @for (metric of metrics; track metric.label) {
+            <div class="about__metric">
+              <span class="about__metric-num">
+                {{ metric.value }}<em>{{ metric.suffix }}</em>
+              </span>
+              <span class="about__metric-label">{{ metric.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

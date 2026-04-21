@@ -1,0 +1,62 @@
+<section id="menu" class="menu section-pad">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="menu__header">
+      <div class="menu__header-left">
+        <span class="label-tag" [appReveal]="0">Signature Collection</span>
+        <h2 class="section-title" [appReveal]="100">
+          Our Finest<br>Pancake Artistry
+        </h2>
+      </div>
+      <p class="section-subtitle" [appReveal]="200">
+        Each creation is a study in balance — golden edges, pillowy centres,
+        and flavours that linger well beyond the last bite.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="menu__grid">
+      @for (item of pancakes; track item.id; let i = $index) {
+        <article
+          class="product-card"
+          [appReveal]="(i % 3) * 100"
+          [attr.aria-label]="item.name"
+        >
+          <!-- Image -->
+          <div class="pc-img">
+            <img [src]="item.imageUrl" [alt]="item.name" loading="lazy" />
+            @if (item.badge) {
+              <span class="pc-badge">{{ item.badge }}</span>
+            }
+          </div>
+
+          <!-- Body -->
+          <div class="pc-body">
+            <div class="pc-meta">
+              <div class="pc-rating">
+                <span class="stars">{{ getStars(item.rating) }}</span>
+                <span>{{ item.rating }} ({{ item.reviewCount }})</span>
+              </div>
+            </div>
+
+            <h3 class="pc-name">{{ item.name }}</h3>
+            <p class="pc-desc">{{ item.description }}</p>
+
+            <div class="pc-footer">
+              <div class="pc-price">
+                ${{ item.price }}<sub>/ stack</sub>
+              </div>
+              <button
+                class="add-btn"
+                (click)="addToCart(item)"
+                [attr.aria-label]="'Add ' + item.name + ' to cart'"
+              >+</button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,82 @@
+.menu { background: var(--ivory); }
+
+.container {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+  @media (max-width: 768px) { padding: 0 24px; }
+}
+
+/* Header */
+.menu__header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 64px; gap: 32px;
+
+  @media (max-width: 768px) { flex-direction: column; align-items: flex-start; }
+}
+.menu__header-left { flex: 1; }
+
+/* Grid */
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+
+  @media (max-width: 960px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 580px) { grid-template-columns: 1fr; }
+}
+
+/* Badge on image */
+.pc-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--espresso); color: var(--amber);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 50px;
+}
+
+/* Card body */
+.pc-body { padding: 24px; }
+
+.pc-meta {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 10px;
+}
+
+.pc-rating {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 500; color: var(--mocha);
+  .stars { font-size: 11px; }
+}
+
+.pc-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem; font-weight: 600;
+  color: var(--espresso); margin-bottom: 8px;
+  letter-spacing: -0.01em; line-height: 1.3;
+}
+
+.pc-desc {
+  font-size: 0.875rem; font-weight: 300;
+  color: var(--mocha); line-height: 1.7; margin-bottom: 20px;
+}
+
+.pc-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding-top: 18px; border-top: 1px solid var(--beige);
+}
+
+.pc-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 600; color: var(--espresso);
+  sub { font-size: 0.85rem; font-weight: 300; color: var(--mocha); vertical-align: baseline; margin-left: 2px; }
+}
+
+.add-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--espresso); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ivory); font-size: 22px; line-height: 1;
+  transition: all 0.25s ease; flex-shrink: 0;
+  &:hover { background: var(--gold); transform: scale(1.1); }
+}

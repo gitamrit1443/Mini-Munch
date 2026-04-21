@@ -1,0 +1,51 @@
+<section id="specials" class="specials section-pad">
+  <div class="container">
+    <div class="chef-banner" [appReveal]="0">
+
+      <!-- Content -->
+      <div class="chef-banner__content">
+        <div class="chef-banner__eyebrow">
+          <span class="chef-banner__badge">Limited Edition</span>
+          <span class="chef-banner__eyebrow-sub">This Season Only</span>
+        </div>
+
+        <h2 class="chef-banner__title">
+          The Truffle &amp;<br><em>Black Cherry</em><br>Soufflé Stack
+        </h2>
+
+        <p class="chef-banner__desc">
+          Our rarest creation — a featherlight soufflé pancake dusted with
+          black truffle oil, crowned with Morello cherry compote and
+          single-origin Valrhona chocolate ganache.
+        </p>
+
+        <div class="chef-banner__tags">
+          @for (tag of tags; track tag) {
+            <span class="chef-tag">{{ tag }}</span>
+          }
+        </div>
+
+        <button class="btn btn--gold" (click)="reserve()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               stroke-width="1.8" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+          Reserve Your Stack
+        </button>
+      </div>
+
+      <!-- Visual -->
+      <div class="chef-banner__visual">
+        <img
+          src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=700&q=80&auto=format&fit=crop"
+          alt="Chef Special Truffle Pancake" loading="lazy" />
+        <div class="chef-banner__overlay" aria-hidden="true"></div>
+        <div class="chef-banner__price-pill">
+          <span class="chef-banner__price-num">$26</span>
+          <span class="chef-banner__price-lbl">Per Stack</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

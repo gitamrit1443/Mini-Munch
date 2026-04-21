@@ -1,0 +1,29 @@
+.toast {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  z-index: 9999;
+  background: var(--espresso);
+  color: var(--ivory);
+  border-left: 3px solid var(--gold);
+  border-radius: 8px;
+  padding: 16px 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; font-weight: 400;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+  max-width: 320px;
+  transform: translateX(130%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+
+  &--show {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  svg {
+    width: 18px; height: 18px;
+    stroke: var(--gold); flex-shrink: 0;
+  }
+}

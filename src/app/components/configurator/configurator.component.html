@@ -1,0 +1,138 @@
+<section id="configurator" class="configurator section-pad">
+  <div class="container">
+
+    <span class="label-tag" [appReveal]="0">Pancake Studio</span>
+    <div class="cfg__header">
+      <h2 class="section-title" [appReveal]="100">
+        Build Your<br>Perfect Stack
+      </h2>
+      <p class="section-subtitle" [appReveal]="200">
+        Customise every layer of your experience. Your pancakes, your rules —
+        crafted exactly how you want them.
+      </p>
+    </div>
+
+    <div class="cfg__layout">
+
+      <!-- ── Left panel ── -->
+      <div class="cfg__panel">
+
+        <!-- 01 Size -->
+        <div class="cfg__group" [appReveal]="0">
+          <h3 class="cfg__group-title">01 — Choose Your Size</h3>
+          <div class="cfg__sizes">
+            @for (size of sizes; track size.id) {
+              <button
+                class="size-card"
+                [class.size-card--active]="selectedSize().id === size.id"
+                (click)="selectSize(size)"
+                [attr.aria-pressed]="selectedSize().id === size.id"
+              >
+                <span class="size-card__name">{{ size.label }}</span>
+                <span class="size-card__desc">{{ size.count }} pancakes</span>
+                <span class="size-card__price">${{ size.price }}.00</span>
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- 02 Toppings -->
+        <div class="cfg__group" [appReveal]="100">
+          <h3 class="cfg__group-title">02 — Select Toppings</h3>
+          <div class="cfg__chips">
+            @for (topping of allToppings; track topping.id) {
+              <button
+                class="chip"
+                [class.active]="isToppingActive(topping.id)"
+                (click)="toggleTopping(topping.id)"
+                [attr.aria-pressed]="isToppingActive(topping.id)"
+              >{{ topping.label }}</button>
+            }
+          </div>
+        </div>
+
+        <!-- 03 Syrups -->
+        <div class="cfg__group" [appReveal]="200">
+          <h3 class="cfg__group-title">03 — Choose Your Syrup</h3>
+          <div class="cfg__chips">
+            @for (syrup of syrups; track syrup.id) {
+              <button
+                class="chip"
+                [class.active]="selectedSyrup() === syrup.id"
+                (click)="selectSyrup(syrup.id)"
+                [attr.aria-pressed]="selectedSyrup() === syrup.id"
+              >{{ syrup.label }}</button>
+            }
+          </div>
+        </div>
+
+        <!-- 04 Add-ons -->
+        <div class="cfg__group" [appReveal]="300">
+          <h3 class="cfg__group-title">04 — Add-Ons</h3>
+          <div class="cfg__chips">
+            @for (addon of addons; track addon.id) {
+              <button
+                class="chip"
+                [class.active]="isAddonActive(addon.id)"
+                (click)="toggleAddon(addon.id)"
+                [attr.aria-pressed]="isAddonActive(addon.id)"
+              >{{ addon.label }} +${{ addon.price }}</button>
+            }
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── Order Summary ── -->
+      <aside class="order-summary" [appReveal]="200" aria-label="Order summary">
+        <p class="order-summary__title">Your Order</p>
+        <p class="order-summary__sub">Adjust selections on the left</p>
+
+        <div class="order-summary__preview">
+          <img
+            src="https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?w=400&q=75&auto=format&fit=crop"
+            alt="Custom pancake preview" loading="lazy" />
+        </div>
+
+        <div class="order-summary__lines">
+          <div class="os-line">
+            <span class="os-label">Size</span>
+            <span class="os-value">{{ selectedSize().label }} Stack ({{ selectedSize().count }})</span>
+          </div>
+          <div class="os-line">
+            <span class="os-label">Toppings</span>
+            <span class="os-value">{{ activeToppingsLabel() }}</span>
+          </div>
+          <div class="os-line">
+            <span class="os-label">Syrup</span>
+            <span class="os-value">{{ activeSyrupLabel() }}</span>
+          </div>
+          <div class="os-line">
+            <span class="os-label">Add-Ons</span>
+            <span class="os-value">{{ activeAddonsLabel() }}</span>
+          </div>
+        </div>
+
+        <div class="order-summary__total">
+          <span class="order-summary__total-label">Total</span>
+          <span class="order-summary__total-price">${{ orderTotal().toFixed(2) }}</span>
+        </div>
+
+        <button class="btn btn--gold order-summary__cta" (click)="addToCart()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               stroke-width="1.8" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437
+                 M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218
+                 c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0
+                 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75
+                 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0
+                 11-1.5 0 .75.75 0 011.5 0z"/>
+          </svg>
+          Add to Order
+        </button>
+      </aside>
+
+    </div>
+  </div>
+</section>
