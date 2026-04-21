@@ -1,7 +1,7 @@
 # Mini Munch — Premium Pancake Ordering Website
 ---
 ## Project Overview
-Mini Munch is a complete single-page premium pancake ordering website built with Angular 21. The design philosophy merges luxury automotive website presentation (BMW, Range Rover) with refined food branding — warm, elegant, and production-ready.
+Mini Munch is a complete single-page premium pancake ordering website built with Angular 21.
 
 ---
 
