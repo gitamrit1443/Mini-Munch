@@ -64,10 +64,7 @@ npm install
 
 ### 2. Run development server
 
-
-npm start
-# or
-ng serve
+ng serve or ng s-o(directly opens in default browser)
 
 
 Open [http://localhost:4200](http://localhost:4200)
