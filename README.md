@@ -1,4 +1,4 @@
-# Mini Munch — Premium Pancake Ordering Website
+# Mini Munch —  Pancake Ordering Website
 ---
 ## Project Overview
 Mini Munch is a complete single-page premium pancake ordering website built with Angular 21.
