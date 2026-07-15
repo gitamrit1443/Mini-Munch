@@ -1,0 +1,36 @@
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+<section class="mx-auto grid min-h-[70vh] max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8">
+    <div class="order-2 lg:order-1">
+        <form asp-action="Register" method="post" class="rounded-[3rem] bg-white p-8 shadow-soft">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="mb-4 text-sm font-semibold text-red-600"></div>
+            <label class="form-label">Full name</label>
+            <input asp-for="FullName" class="form-input" />
+            <span asp-validation-for="FullName" class="form-error"></span>
+
+            <label class="form-label mt-5">Email</label>
+            <input asp-for="Email" class="form-input" />
+            <span asp-validation-for="Email" class="form-error"></span>
+
+            <label class="form-label mt-5">Password</label>
+            <input asp-for="Password" class="form-input" />
+            <span asp-validation-for="Password" class="form-error"></span>
+
+            <label class="form-label mt-5">Confirm password</label>
+            <input asp-for="ConfirmPassword" class="form-input" />
+            <span asp-validation-for="ConfirmPassword" class="form-error"></span>
+
+            <button class="mt-7 w-full rounded-full bg-cocoa px-6 py-4 font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-stone-800">Create account</button>
+            <p class="mt-6 text-center text-sm text-stone-600">Already registered? <a asp-action="Login" class="font-black text-cocoa underline decoration-honey decoration-4 underline-offset-4">Login</a></p>
+        </form>
+    </div>
+    <div class="order-1 lg:order-2">
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Join Mini Munch</p>
+        <h1 class="mt-4 text-5xl font-black tracking-tight text-cocoa">Create your pancake profile.</h1>
+        <p class="mt-5 text-lg leading-8 text-stone-600">Register, add items to your cart and track orders from a clean MVC dashboard.</p>
+    </div>
+</section>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

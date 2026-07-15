@@ -1,0 +1,56 @@
+@model Order
+@{
+    ViewData["Title"] = "Manage Order";
+}
+<section class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="rounded-[3rem] bg-white p-8 shadow-soft">
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+                <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Admin order</p>
+                <h1 class="mt-3 text-4xl font-black text-cocoa">@Model.OrderNumber</h1>
+                <p class="mt-2 text-stone-500">@Model.CustomerName · @Model.PhoneNumber</p>
+            </div>
+            <form asp-action="UpdateOrderStatus" method="post" class="flex flex-wrap items-center gap-3">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@Model.Id" />
+                <select name="status" class="rounded-full border border-stone-200 bg-white px-5 py-3 font-bold text-cocoa">
+                    @foreach (OrderStatus status in Enum.GetValues<OrderStatus>())
+                    {
+                        if (Model.Status == status)
+                        {
+                            <option value="@status" selected>@status</option>
+                        }
+                        else
+                        {
+                            <option value="@status">@status</option>
+                        }
+                    }
+                </select>
+                <button class="rounded-full bg-cocoa px-5 py-3 font-black text-white">Update</button>
+            </form>
+        </div>
+        <div class="mt-8 grid gap-8 lg:grid-cols-[1fr_320px]">
+            <div class="space-y-4">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="flex justify-between rounded-3xl bg-stone-50 p-5">
+                        <div>
+                            <div class="font-black text-cocoa">@item.ProductName</div>
+                            <div class="text-sm text-stone-500">@item.Quantity × ₹@item.UnitPrice</div>
+                        </div>
+                        <div class="font-black text-cocoa">₹@item.LineTotal</div>
+                    </div>
+                }
+            </div>
+            <aside class="rounded-3xl bg-cocoa p-6 text-white">
+                <h2 class="text-xl font-black">Delivery</h2>
+                <p class="mt-3 text-sm leading-6 text-stone-300">@Model.DeliveryAddress</p>
+                <div class="mt-6 border-t border-white/10 pt-5 space-y-2 text-sm">
+                    <div class="flex justify-between text-stone-300"><span>Subtotal</span><span class="text-white">₹@Model.SubTotal</span></div>
+                    <div class="flex justify-between text-stone-300"><span>Delivery</span><span class="text-white">₹@Model.DeliveryFee</span></div>
+                    <div class="flex justify-between text-lg font-black"><span>Total</span><span>₹@Model.TotalAmount</span></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

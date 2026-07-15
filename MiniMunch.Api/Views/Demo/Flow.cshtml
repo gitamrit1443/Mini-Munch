@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Demo Flow";
+}
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="rounded-[3rem] bg-cocoa p-8 text-white shadow-soft md:p-12">
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Project demo</p>
+        <h1 class="mt-4 text-5xl font-black tracking-tight">Mini Munch complete flow</h1>
+        <p class="mt-4 max-w-3xl text-stone-300">Use this page while presenting the project. It follows the exact customer-to-admin journey.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+            <a asp-controller="Home" asp-action="Index" class="rounded-full bg-white px-5 py-3 font-black text-cocoa">Start from Home</a>
+            <a asp-controller="Account" asp-action="Register" class="rounded-full bg-honey px-5 py-3 font-black text-cocoa">Register Customer</a>
+            <a asp-controller="Account" asp-action="Login" class="rounded-full border border-white/20 px-5 py-3 font-black text-white">Login</a>
+        </div>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+        <div class="flow-card"><span>1</span><strong>Home page show</strong><a asp-controller="Home" asp-action="Index">Open</a></div>
+        <div class="flow-card"><span>2</span><strong>Register as customer</strong><a asp-controller="Account" asp-action="Register">Open</a></div>
+        <div class="flow-card"><span>3</span><strong>Login</strong><a asp-controller="Account" asp-action="Login">Open</a></div>
+        <div class="flow-card"><span>4</span><strong>Browse menu</strong><a asp-controller="Menu" asp-action="Index">Open</a></div>
+        <div class="flow-card"><span>5</span><strong>Add items to cart</strong><a asp-controller="Cart" asp-action="Index">Open</a></div>
+        <div class="flow-card"><span>6</span><strong>Checkout</strong><a asp-controller="Cart" asp-action="Checkout">Open</a></div>
+        <div class="flow-card"><span>7</span><strong>Show order history</strong><a asp-controller="Orders" asp-action="Index">Open</a></div>
+        <div class="flow-card"><span>8</span><strong>Logout</strong><small>Use top-right Logout button</small></div>
+        <div class="flow-card"><span>9</span><strong>Login as admin</strong><a asp-controller="Account" asp-action="Login">Open</a></div>
+        <div class="flow-card"><span>10</span><strong>Show dashboard</strong><a asp-controller="Admin" asp-action="Dashboard">Open</a></div>
+        <div class="flow-card"><span>11</span><strong>Manage products</strong><a asp-controller="Admin" asp-action="Products">Open</a></div>
+        <div class="flow-card"><span>12</span><strong>Update order status</strong><a asp-controller="Admin" asp-action="Orders">Open</a></div>
+    </div>
+
+    <div class="mt-10 rounded-[2rem] bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-black text-cocoa">Demo credentials</h2>
+        <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <div class="rounded-3xl bg-stone-50 p-5">
+                <div class="text-sm font-black uppercase tracking-widest text-stone-400">Customer</div>
+                <p class="mt-2 font-black text-cocoa">customer@minimunch.local</p>
+                <p class="text-stone-600">Customer@123</p>
+            </div>
+            <div class="rounded-3xl bg-stone-50 p-5">
+                <div class="text-sm font-black uppercase tracking-widest text-stone-400">Admin</div>
+                <p class="mt-2 font-black text-cocoa">admin@minimunch.local</p>
+                <p class="text-stone-600">Admin@123</p>
+            </div>
+        </div>
+    </div>
+</section>

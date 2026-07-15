@@ -1,0 +1,45 @@
+@model IReadOnlyList<Order>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+            <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Admin</p>
+            <h1 class="mt-3 text-4xl font-black text-cocoa">Dashboard</h1>
+        </div>
+        <div class="flex gap-3">
+            <a asp-action="Products" class="rounded-full bg-white px-5 py-3 text-sm font-black text-cocoa shadow-sm">Products</a>
+            <a asp-action="Orders" class="rounded-full bg-cocoa px-5 py-3 text-sm font-black text-white shadow-sm">Orders</a>
+        </div>
+    </div>
+    <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+        <div class="admin-stat"><span>Revenue</span><strong>₹@ViewBag.Revenue</strong></div>
+        <div class="admin-stat"><span>Total Orders</span><strong>@ViewBag.TotalOrders</strong></div>
+        <div class="admin-stat"><span>Active Orders</span><strong>@ViewBag.PendingOrders</strong></div>
+        <div class="admin-stat"><span>Products</span><strong>@ViewBag.TotalProducts</strong></div>
+        <div class="admin-stat"><span>Customers</span><strong>@ViewBag.TotalUsers</strong></div>
+    </div>
+    <div class="mt-10 rounded-[3rem] bg-white p-6 shadow-soft">
+        <h2 class="text-2xl font-black text-cocoa">Latest orders</h2>
+        <div class="mt-6 overflow-x-auto">
+            <table class="min-w-full text-left text-sm">
+                <thead class="text-xs uppercase tracking-widest text-stone-400">
+                    <tr><th class="py-3">Order</th><th>Customer</th><th>Status</th><th>Total</th><th></th></tr>
+                </thead>
+                <tbody class="divide-y divide-stone-100">
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td class="py-4 font-black text-cocoa">@order.OrderNumber</td>
+                            <td>@order.CustomerName</td>
+                            <td><span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-black text-amber-700">@order.Status</span></td>
+                            <td class="font-black">₹@order.TotalAmount</td>
+                            <td><a asp-action="OrderDetails" asp-route-id="@order.Id" class="font-black text-cocoa underline decoration-honey decoration-4 underline-offset-4">Open</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

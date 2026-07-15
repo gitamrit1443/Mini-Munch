@@ -1,0 +1,47 @@
+@model IReadOnlyList<Product>
+@{
+    ViewData["Title"] = "Menu";
+    var categories = ViewBag.Categories as IReadOnlyList<Category> ?? new List<Category>();
+    var selectedCategoryId = ViewBag.SelectedCategoryId as Guid?;
+}
+<section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="rounded-[3rem] bg-cocoa p-8 text-white shadow-soft md:p-12">
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Fresh menu</p>
+        <div class="mt-4 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+                <h1 class="text-5xl font-black tracking-tight">Choose your stack</h1>
+                <p class="mt-4 max-w-2xl text-stone-300">Search, filter, add to cart and checkout. Everything is stored in SQL Server.</p>
+            </div>
+            <form method="get" class="flex w-full gap-3 md:w-auto">
+                <input name="q" value="@ViewBag.Search" placeholder="Search pancakes..." class="w-full rounded-full border border-white/10 bg-white/10 px-5 py-3 text-sm font-semibold text-white placeholder:text-stone-300 outline-none ring-honey focus:ring-2 md:w-72" />
+                <button class="rounded-full bg-honey px-6 py-3 font-black text-cocoa">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+        <a asp-controller="Menu" asp-action="Index" asp-route-q="@ViewBag.Search" class="rounded-full @(selectedCategoryId is null ? "bg-cocoa text-white" : "bg-white text-cocoa") px-5 py-2.5 text-sm font-black shadow-sm">All</a>
+        @foreach (var category in categories)
+        {
+            <a asp-controller="Menu" asp-action="Index" asp-route-categoryId="@category.Id" asp-route-q="@ViewBag.Search" class="rounded-full @(selectedCategoryId == category.Id ? "bg-cocoa text-white" : "bg-white text-cocoa") px-5 py-2.5 text-sm font-black shadow-sm">@category.Name</a>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="mt-10 rounded-[2rem] bg-white p-10 text-center shadow-sm">
+            <div class="text-5xl">🔎</div>
+            <h2 class="mt-4 text-2xl font-black text-cocoa">No pancakes found</h2>
+            <p class="mt-2 text-stone-600">Try another search or category.</p>
+        </div>
+    }
+    else
+    {
+        <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            @foreach (var product in Model)
+            {
+                <partial name="~/Views/Shared/_ProductCard.cshtml" model="product" />
+            }
+        </div>
+    }
+</section>

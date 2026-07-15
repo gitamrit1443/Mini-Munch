@@ -1,0 +1,54 @@
+@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+    var items = ViewBag.Items as IReadOnlyList<CartItem> ?? new List<CartItem>();
+    decimal subTotal = ViewBag.SubTotal ?? 0m;
+    decimal deliveryFee = ViewBag.DeliveryFee ?? 0m;
+}
+<section class="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_380px] lg:px-8">
+    <form asp-action="Checkout" method="post" class="rounded-[3rem] bg-white p-8 shadow-soft">
+        @Html.AntiForgeryToken()
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Delivery details</p>
+        <h1 class="mt-3 text-4xl font-black text-cocoa">Checkout</h1>
+        <div class="mt-8 grid gap-5 md:grid-cols-2">
+            <div>
+                <label class="form-label">Name</label>
+                <input asp-for="CustomerName" class="form-input" />
+                <span asp-validation-for="CustomerName" class="form-error"></span>
+            </div>
+            <div>
+                <label class="form-label">Phone</label>
+                <input asp-for="PhoneNumber" class="form-input" />
+                <span asp-validation-for="PhoneNumber" class="form-error"></span>
+            </div>
+            <div class="md:col-span-2">
+                <label class="form-label">Address</label>
+                <textarea asp-for="DeliveryAddress" rows="4" class="form-input"></textarea>
+                <span asp-validation-for="DeliveryAddress" class="form-error"></span>
+            </div>
+            <div class="md:col-span-2">
+                <label class="form-label">Notes</label>
+                <textarea asp-for="Notes" rows="3" class="form-input" placeholder="Less sugar, extra cream, gate number..."></textarea>
+            </div>
+        </div>
+        <button class="mt-7 rounded-full bg-cocoa px-8 py-4 font-black text-white shadow-soft">Place order</button>
+    </form>
+    <aside class="h-fit rounded-[2rem] bg-cocoa p-6 text-white shadow-soft">
+        <h2 class="text-2xl font-black">Summary</h2>
+        <div class="mt-6 space-y-4">
+            @foreach (var item in items)
+            {
+                <div class="flex justify-between gap-4 text-sm">
+                    <span class="text-stone-300">@item.Quantity × @item.Product.Name</span>
+                    <span class="font-black">₹@(item.UnitPriceSnapshot * item.Quantity)</span>
+                </div>
+            }
+        </div>
+        <div class="mt-6 border-t border-white/10 pt-5 space-y-3 text-sm text-stone-300">
+            <div class="flex justify-between"><span>Subtotal</span><span class="font-black text-white">₹@subTotal</span></div>
+            <div class="flex justify-between"><span>Delivery</span><span class="font-black text-white">₹@deliveryFee</span></div>
+            <div class="flex justify-between text-lg font-black text-white"><span>Total</span><span>₹@(subTotal + deliveryFee)</span></div>
+        </div>
+    </aside>
+</section>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

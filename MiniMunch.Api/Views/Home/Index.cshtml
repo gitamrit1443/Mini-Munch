@@ -1,0 +1,89 @@
+@model IReadOnlyList<Product>
+@{
+    ViewData["Title"] = "Artisan Pancakes";
+}
+
+<section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(245,158,11,0.25),transparent_34%),radial-gradient(circle_at_80%_10%,rgba(190,18,60,0.16),transparent_30%)]"></div>
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
+        <div>
+            <span class="inline-flex rounded-full border border-honey/30 bg-white/70 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-honey shadow-sm">Fresh every morning</span>
+            <h1 class="mt-6 max-w-3xl text-5xl font-black leading-[0.95] tracking-tight text-cocoa sm:text-7xl">Premium pancakes, delivered with style.</h1>
+            <p class="mt-6 max-w-xl text-lg leading-8 text-stone-600">A clean MVC remake of Mini Munch with cart, checkout, order tracking, admin panel, and JWT authentication.</p>
+            <div class="mt-9 flex flex-wrap gap-4">
+                <a asp-controller="Menu" asp-action="Index" class="rounded-full bg-cocoa px-7 py-4 font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-stone-800">Order now</a>
+                <a asp-controller="Demo" asp-action="Flow" class="rounded-full border border-stone-200 bg-white px-7 py-4 font-black text-cocoa shadow-sm transition hover:-translate-y-1 hover:border-honey">Demo flow</a>
+            </div>
+            <div class="mt-10 grid max-w-lg grid-cols-3 gap-4">
+                <div class="rounded-3xl bg-white/80 p-5 shadow-sm">
+                    <div class="text-3xl font-black text-cocoa">6+</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-stone-500">Signature stacks</div>
+                </div>
+                <div class="rounded-3xl bg-white/80 p-5 shadow-sm">
+                    <div class="text-3xl font-black text-cocoa">12m</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-stone-500">Avg prep</div>
+                </div>
+                <div class="rounded-3xl bg-white/80 p-5 shadow-sm">
+                    <div class="text-3xl font-black text-cocoa">JWT</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-stone-500">Secure auth</div>
+                </div>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="absolute -left-6 -top-6 h-48 w-48 rounded-full bg-honey/20 blur-3xl"></div>
+            <div class="relative overflow-hidden rounded-[3rem] bg-cocoa p-8 text-white shadow-soft">
+                <div class="rounded-[2.5rem] border border-white/10 bg-white/10 p-8 backdrop-blur">
+                    <div class="text-center text-8xl">🥞</div>
+                    <div class="mt-8 rounded-3xl bg-white p-6 text-cocoa">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Chef pick</p>
+                                <h2 class="mt-2 text-3xl font-black">Caramel Banana Crunch</h2>
+                            </div>
+                            <span class="rounded-full bg-honey/15 px-4 py-2 text-sm font-black text-honey">₹259</span>
+                        </div>
+                        <p class="mt-4 text-sm leading-6 text-stone-600">Golden pancakes with salted caramel, banana coins and almond praline crunch.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+            <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Menu highlights</p>
+            <h2 class="mt-2 text-4xl font-black text-cocoa">Handpicked stacks</h2>
+        </div>
+        <a asp-controller="Menu" asp-action="Index" class="text-sm font-black text-cocoa underline decoration-honey decoration-4 underline-offset-8">View full menu</a>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        @foreach (var product in Model)
+        {
+            <partial name="~/Views/Shared/_ProductCard.cshtml" model="product" />
+        }
+    </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="rounded-[3rem] bg-cocoa p-8 text-white shadow-soft md:p-12">
+        <div class="grid gap-10 md:grid-cols-3">
+            <div>
+                <div class="text-4xl">🔥</div>
+                <h3 class="mt-4 text-xl font-black">Hot and fresh</h3>
+                <p class="mt-2 text-sm leading-6 text-stone-300">Every order is made after checkout, not before.</p>
+            </div>
+            <div>
+                <div class="text-4xl">🧈</div>
+                <h3 class="mt-4 text-xl font-black">Premium toppings</h3>
+                <p class="mt-2 text-sm leading-6 text-stone-300">Maple butter, berry compote, praline and Biscoff sauces.</p>
+            </div>
+            <div>
+                <div class="text-4xl">⚡</div>
+                <h3 class="mt-4 text-xl font-black">Fast checkout</h3>
+                <p class="mt-2 text-sm leading-6 text-stone-300">Cart, order status and admin workflow are built in.</p>
+            </div>
+        </div>
+    </div>
+</section>

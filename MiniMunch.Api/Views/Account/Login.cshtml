@@ -1,0 +1,36 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+<section class="mx-auto grid min-h-[70vh] max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8">
+    <div>
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Welcome back</p>
+        <h1 class="mt-4 text-5xl font-black tracking-tight text-cocoa">Login to order fresh pancakes.</h1>
+        <p class="mt-5 text-lg leading-8 text-stone-600">JWT Bearer authentication is used behind the MVC pages. The token is stored in an HttpOnly cookie.</p>
+        <div class="mt-8 rounded-3xl bg-white p-5 text-sm text-stone-600 shadow-sm">
+            <div class="font-black text-cocoa">Demo accounts</div>
+            <p class="mt-2">Admin: admin@minimunch.local / Admin@123</p>
+            <p>Customer: customer@minimunch.local / Customer@123</p>
+        </div>
+    </div>
+    <form asp-action="Login" method="post" class="rounded-[3rem] bg-white p-8 shadow-soft">
+        @Html.AntiForgeryToken()
+        <input asp-for="ReturnUrl" type="hidden" />
+        <div asp-validation-summary="ModelOnly" class="mb-4 text-sm font-semibold text-red-600"></div>
+        <label class="form-label">Email</label>
+        <input asp-for="Email" class="form-input" placeholder="you@example.com" />
+        <span asp-validation-for="Email" class="form-error"></span>
+
+        <label class="form-label mt-5">Password</label>
+        <input asp-for="Password" class="form-input" placeholder="••••••••" />
+        <span asp-validation-for="Password" class="form-error"></span>
+
+        <label class="mt-5 flex items-center gap-3 text-sm font-bold text-stone-700">
+            <input asp-for="RememberMe" class="h-4 w-4 rounded border-stone-300 text-honey" /> Remember me
+        </label>
+
+        <button class="mt-7 w-full rounded-full bg-cocoa px-6 py-4 font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-stone-800">Login</button>
+        <p class="mt-6 text-center text-sm text-stone-600">New here? <a asp-action="Register" class="font-black text-cocoa underline decoration-honey decoration-4 underline-offset-4">Create account</a></p>
+    </form>
+</section>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

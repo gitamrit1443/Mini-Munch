@@ -1,0 +1,36 @@
+@model IReadOnlyList<Order>
+@{
+    ViewData["Title"] = "My Orders";
+}
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+    <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">Order history</p>
+    <h1 class="mt-3 text-4xl font-black text-cocoa">My orders</h1>
+    <div class="mt-8 space-y-4">
+        @if (!Model.Any())
+        {
+            <div class="rounded-[3rem] bg-white p-10 text-center shadow-soft">
+                <div class="text-6xl">📭</div>
+                <h2 class="mt-4 text-2xl font-black text-cocoa">No orders yet</h2>
+                <a asp-controller="Menu" asp-action="Index" class="mt-6 inline-flex rounded-full bg-cocoa px-6 py-3 font-black text-white">Order pancakes</a>
+            </div>
+        }
+        else
+        {
+            @foreach (var order in Model)
+            {
+                <a asp-action="Details" asp-route-id="@order.Id" class="block rounded-[2rem] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                            <div class="font-black text-cocoa">@order.OrderNumber</div>
+                            <div class="text-sm text-stone-500">@order.CreatedAt.ToLocalTime().ToString("dd MMM yyyy, hh:mm tt")</div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="rounded-full bg-amber-100 px-4 py-2 text-sm font-black text-amber-700">@order.Status</span>
+                            <span class="text-xl font-black text-cocoa">₹@order.TotalAmount</span>
+                        </div>
+                    </div>
+                </a>
+            }
+        }
+    </div>
+</section>

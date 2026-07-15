@@ -1,0 +1,41 @@
+@model Product
+@{
+    ViewData["Title"] = Model.Name;
+}
+<section class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8">
+    <div class="grid min-h-[520px] place-items-center rounded-[3rem] bg-gradient-to-br from-amber-100 via-orange-50 to-rose-100 text-9xl shadow-soft">🥞</div>
+    <div class="flex flex-col justify-center">
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-honey">@Model.Category.Name</p>
+        <h1 class="mt-4 text-5xl font-black tracking-tight text-cocoa">@Model.Name</h1>
+        @if (!string.IsNullOrWhiteSpace(Model.Badge))
+        {
+            <span class="mt-5 inline-flex w-fit rounded-full bg-amber-100 px-4 py-2 text-sm font-black text-amber-700">@Model.Badge</span>
+        }
+        <p class="mt-6 text-lg leading-8 text-stone-600">@Model.Description</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+            <div class="rounded-3xl bg-white p-5 shadow-sm">
+                <div class="text-xs font-black uppercase tracking-widest text-stone-400">Price</div>
+                <div class="mt-1 text-2xl font-black text-cocoa">₹@Model.Price</div>
+            </div>
+            <div class="rounded-3xl bg-white p-5 shadow-sm">
+                <div class="text-xs font-black uppercase tracking-widest text-stone-400">Prep</div>
+                <div class="mt-1 text-2xl font-black text-cocoa">@Model.PrepTimeMinutes min</div>
+            </div>
+            <div class="rounded-3xl bg-white p-5 shadow-sm">
+                <div class="text-xs font-black uppercase tracking-widest text-stone-400">Calories</div>
+                <div class="mt-1 text-2xl font-black text-cocoa">@Model.Calories</div>
+            </div>
+        </div>
+        <div class="mt-8 rounded-3xl bg-white p-6 shadow-sm">
+            <h2 class="font-black text-cocoa">Ingredients</h2>
+            <p class="mt-2 text-sm leading-6 text-stone-600">@Model.Ingredients</p>
+        </div>
+        <form asp-controller="Cart" asp-action="Add" method="post" class="mt-8 flex flex-wrap gap-4">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <input type="number" name="quantity" min="1" max="10" value="1" class="w-28 rounded-full border border-stone-200 bg-white px-5 py-4 text-center font-black outline-none focus:ring-2 focus:ring-honey" />
+            <button class="rounded-full bg-cocoa px-8 py-4 font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-stone-800">Add to cart</button>
+            <a asp-controller="Menu" asp-action="Index" class="rounded-full border border-stone-200 bg-white px-8 py-4 font-black text-cocoa shadow-sm">Back to menu</a>
+        </form>
+    </div>
+</section>
