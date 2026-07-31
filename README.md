@@ -188,4 +188,4 @@ Controllers use [Authorize] and [Authorize(Roles = "Admin")]
 
 **Amrit Pal Singh**
 Full Stack Developer · B.Tech CSE (2022–2026)
-🌐 [amritcode.com](https://amritcode.com) · 💻 [github.com/gitamrit1443](https://github.com/gitamrit1443)
+🌐 [amritcode.com](https://amritpalsingh-portfolio.netlify.app) · 💻 [github.com/gitamrit1443](https://github.com/gitamrit1443)
